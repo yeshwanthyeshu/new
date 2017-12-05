@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+<head>
+	<!-- The following links are for d3.js
+		the first link is for version 2 (linechart is done by using this)
+		the second link if for version 4
+	-->
+	<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<!--The below link is for bootstrap-->
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+
+<!-- Latest compiled JavaScript -->
+	<!-- The following links are for d3.js
+		the first link is for version 2 (linechart is done by using this)
+		the second link if for version 4
+	-->
+	<script src="http://mbostock.github.com/d3/d3.v2.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<!--The below link is for style and bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<link rel="stylesheet" href="./style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<!--The below links is for jqeury for poping up-->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+
+	
+	
+	
+	</head>
+<body>
+	
+	<!--this is for popup-->
+
+
+<div id="popbox">
+<div class="ng-scope" style="border:1px solid black;background-color:#ffffff;border-radius: 7px;">
+    <form name="_form" class="form-horizontal ng-pristine ng-valid" ng-submit="submit(_form)">
+        <div class="modal-header">
+            <button type="button" class="close" ng-click="dismiss()" aria-hidden="true">×</button>
+            <h3>Widget Settings</h3>
+        </div>
+
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group" ng-class="{error: _form.name.$error &amp;&amp; _form.submitted}">
+                        <label class="control-label col-lg-4 col-md-4">Name</label>
+                        <div class="col-lg-8 col-md-8">
+                            <input name="name" type="text" ng-model="form.name" class="form-control ng-pristine ng-valid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4">Type</label>
+                        <div class="col-lg-8 col-md-8">
+                            <select name="type" class="form-control ng-pristine ng-valid" ng-model="form.type" ng-options="value for value in widgetTypes">
+								<option value="?" selected="selected" label=""></option>
+								<option value="0" label="lineChart">lineChart</option>
+								<option value="1" label="cumulativeLineChart">cumulativeLineChart</option>
+								<option value="2" label="stackedAreaChart">stackedAreaChart</option>
+								<option value="3" label="discreteBarChart">discreteBarChart</option>
+								<option value="4" label="pieChart">pieChart</option>
+								<option value="5" label="boxPlotChart">boxPlotChart</option>
+							</select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group" ng-class="{error: _form.sizeX.$error &amp;&amp; _form.submitted}">
+                        <label class="control-label col-lg-4 col-md-4">Width</label>
+                        <div class="col-lg-8 col-md-8">
+                            <input name="sizeX" ng-model="form.sizeX" class="form-control ng-pristine ng-valid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4">Height</label>
+                        <div class="col-lg-8 col-md-8">
+                            <input name="sizeY" ng-model="form.sizeY" class="form-control ng-pristine ng-valid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group" ng-class="{error: _form.sizeX.$error &amp;&amp; _form.submitted}">
+                        <label class="control-label col-lg-4 col-md-4">Column</label>
+                        <div class="col-lg-8 col-md-8">
+                            <input name="col" ng-model="form.col" class="form-control ng-pristine ng-valid">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <label class="control-label col-lg-4 col-md-4">Row</label>
+                        <div class="col-lg-8 col-md-8">
+                            <input name="row" ng-model="form.row" class="form-control ng-pristine ng-valid">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <a ng-click="remove()" class="btn btn-danger pull-left" style="margin-top: 10px;" tabindex="-1"><i class="glyphicon glyphicon-trash"></i> Delete</a>
+            <a ng-click="dismiss()" class="btn btn-default" tabindex="-1"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
+            <button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> Save</button>
+        </div>
+    </form>
+</div>
+</div>
+
+
+
+
+	<!--pop up ends---->
+	<div class="navbar">
+	  <a href="#" style="margin-left:200px;">Select the chart </a>
+	  
+	 
+	<div id="chartselect" style=" margin-left: 500px;">
+		<select id="chart" style="font-size:20px;border-radius:10px;border: 2px solid #ccc;color: #779126;width: 268px;" onChange="change()">
+			<option value="none">none</option>
+			<option value="bar">Bar</option>
+			<option value="pie">Pie</option>
+			<option value="line">Line</option> 
+		</select>
+	</div>
+	  
+	</div>
+
+
+	<div id="test">
+		hi. select any type of graph for above.
+	</div>
+	<input id="myinput" type="number"/>
+	<input class="btn btn-primary" type="button" value="add to data" onclick="addtodata()"/>
+	<div id="mydiv">
+		to show
+	</div>
+	<div id="savedchart">
+		Click below to save the generated charts.
+		<input class="btn btn-primary" type="button" value="save" onclick="savethecharts()" />
+		<br>Your saved charts are:
+	</div>
+	<svg id="svg1" width="300" height="200"> </svg>
+	<svg id="svg2" width="300" height="200"> </svg>
+	<svg id="svg3" width="300" height="200"> </svg>
+
+	<script src="./script.js"></script>
+
+</body>
+</html>
