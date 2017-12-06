@@ -39,7 +39,7 @@
 	
 	
 	
-	</head>
+</head>
 <body>
 	
 	<!--this is for popup-->
@@ -67,7 +67,7 @@
                     <div class="form-group">
                         <label class="control-label col-lg-4 col-md-4">Type</label>
                         <div class="col-lg-8 col-md-8">
-                            <select name="type" class="form-control ng-pristine ng-valid" ng-model="form.type" ng-options="value for value in widgetTypes">
+                            <select id="selectcharttype" name="type" class="form-control ng-pristine ng-valid" ng-model="form.type" ng-options="value for value in widgetTypes">
 								<option value="?" selected="selected" label=""></option>
 								<option value="0" label="lineChart">lineChart</option>
 								<option value="1" label="cumulativeLineChart">cumulativeLineChart</option>
@@ -121,7 +121,7 @@
         <div class="modal-footer">
             <a ng-click="remove()" class="btn btn-danger pull-left" style="margin-top: 10px;" tabindex="-1"><i class="glyphicon glyphicon-trash"></i> Delete</a>
             <a ng-click="dismiss()" class="btn btn-default" tabindex="-1"><i class="glyphicon glyphicon-remove"></i> Cancel</a>
-            <button type="submit" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> Save</button>
+            <button type="submit" onclick="selectchart()" class="btn btn-primary btn-lg"><i class="glyphicon glyphicon-ok"></i> Save</button>
         </div>
     </form>
 </div>
@@ -160,6 +160,7 @@
 		<input class="btn btn-primary" type="button" value="save" onclick="savethecharts()" />
 		<br>Your saved charts are:
 	</div>
+	<button onclick="widget()">widget</button>
 	<svg id="svg1" width="300" height="200"> </svg>
 	<svg id="svg2" width="300" height="200"> </svg>
 	<svg id="svg3" width="300" height="200"> </svg>
